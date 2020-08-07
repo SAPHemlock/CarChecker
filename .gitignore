@@ -4,3 +4,5 @@ obj/
 .vs/
 *.csproj.user
 Server/app.db
+*.db-shm
+*.db-wal

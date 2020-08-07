@@ -13,6 +13,7 @@ namespace CarChecker.Server.Controllers
     [Authorize]
     [ApiController]
     [Route("api/[controller]/[action]")]
+    // [ApiExplorerSettings(IgnoreApi = true)]  // If we do not provide HTTP attribute for api methods.
     public class VehicleController : ControllerBase
     {
         ApplicationDbContext db;
@@ -22,6 +23,7 @@ namespace CarChecker.Server.Controllers
             this.db = db;
         }
 
+        [HttpGet]
         public IEnumerable<Vehicle> ChangedVehicles([FromQuery] DateTime since)
         {
             return db.Vehicles.Where(v => v.LastUpdated >= since).Include(v => v.Notes);
